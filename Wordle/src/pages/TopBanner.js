@@ -3,7 +3,6 @@ import { Fragment } from 'react';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 
-
 const TopBanner = (props) => {
   return (
     <Box textAlign="center">
