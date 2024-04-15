@@ -1,0 +1,29 @@
+.leaf-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Ensure leaves are behind other content */
+  }
+  
+  .leaf {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #8dc63f; /* Adjust color as needed */
+    border-radius: 10%;
+    opacity: 1; 
+    animation: fall 10s linear infinite;
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(-10%);
+    }
+    100% {
+      transform: translateY(2000%);
+    }
+  }
+  

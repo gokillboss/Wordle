@@ -34,8 +34,6 @@ const LetterBox = (props) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-
-
         }}>
             {key}
         </Box>

@@ -5,6 +5,7 @@ import Keyboard from "./pages/Keyboard";
 import MessageCenter from "./pages/MessageCenter";
 import TopBanner from "./pages/TopBanner";
 import wordList from './fiveLetterWords';
+import LeafAnimation from './components/LeafAnimation'
 
 const config = {
     numBoxesPerRow: 5,
@@ -124,12 +125,13 @@ function App() {
     return (
 
         <Fragment>
-            <div style={{ backgroundColor: 'none' }}>
-
+            <div >
+                <LeafAnimation />
                 <Box padding={5}>
                     <TopBanner />
                 </Box>
                 <Box margin='auto' sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
                     <GuessArea allBoxes={allBoxes} />
                     <MessageCenter message={message} />
                     <Keyboard right={right} wrong={wrong} half={half} setLetterCallback={(letter) => setLetter(letter)} />
