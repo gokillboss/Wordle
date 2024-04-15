@@ -1,7 +1,23 @@
 import React, { useEffect } from 'react';
 import './LeafAnimation.css';
 
+
+const BackgroundMusic = () => {
+    useEffect(() => {
+        const audio = new Audio(require("./SongFromSecretGarden.mp3")); // Relative path to your audio file
+        audio.loop = true;
+        audio.play();
+
+        return () => {
+            audio.pause();
+        };
+    }, []);
+
+    return null;
+};
 const LeafAnimation = () => {
+
+
 
     const autumnColors = ['#8dc63f', '#e68a00', '#b35900', '#ff9900', '#cc6600'];
 
@@ -19,10 +35,12 @@ const LeafAnimation = () => {
 
     return (
         <div className="leaf-container">
+
             {/* Create multiple leaf elements */}
             {[...Array(12)].map((_, index) => (
-                 <div key={index} className="leaf" style={{ backgroundColor: autumnColors[index % autumnColors.length] }}></div>
+                <div key={index} className="leaf" style={{ backgroundColor: autumnColors[index % autumnColors.length] }}></div>
             ))}
+            <BackgroundMusic />
         </div>
     );
 };
