@@ -8,7 +8,7 @@ import Button from '@mui/material/Button'
 const Keyboard = (props) => {
 
     const { right, wrong, half } = props
-    console.log(props)
+   // console.log(props)
     const colorKey = (letter) => {
         if (right && right.indexOf(letter) !== -1) { return "green"; }
         else
