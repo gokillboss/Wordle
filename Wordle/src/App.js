@@ -138,10 +138,7 @@ function App() {
                     </Box>
                 </Box>
             </div>
-
         </Fragment >
-
-
     );
 }
 
