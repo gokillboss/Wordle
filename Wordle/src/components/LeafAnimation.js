@@ -4,7 +4,7 @@ import './LeafAnimation.css';
 
 const BackgroundMusic = () => {
     useEffect(() => {
-        const audio = new Audio(require("./SongFromSecretGarden.mp3")); // Relative path to your audio file
+        const audio = new Audio(require("./SongFromSecretGarden.mp3")); 
         audio.loop = true;
         audio.play();
         audio.volume = 0.1;
@@ -26,19 +26,19 @@ const LeafAnimation = () => {
         // Create falling animation for each leaf with random positions
         const leaves = document.querySelectorAll('.leaf');
         leaves.forEach((leaf, index) => {
-            const delay = Math.random() * 15; // Randomize delay for each leaf
+            const delay = Math.random() * 10; 
             leaf.style.animationDelay = `${delay}s`;
 
-            const randomPosition = Math.random() * 100; // Random position between 0 and 100%
-            leaf.style.left = `${randomPosition}%`; // Set left position
+            const randomPosition = Math.random() * 100; 
+            leaf.style.left = `${randomPosition}%`; 
         });
     }, []);
 
     return (
         <div className="leaf-container">
 
-            {/* Create multiple leaf elements */}
-            {[...Array(12)].map((_, index) => (
+           
+            {[...Array(20)].map((_, index) => (
                 <div key={index} className="leaf" style={{ backgroundColor: autumnColors[index % autumnColors.length] }}></div>
             ))}
             <BackgroundMusic />
