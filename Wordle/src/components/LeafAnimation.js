@@ -7,6 +7,7 @@ const BackgroundMusic = () => {
         const audio = new Audio(require("./SongFromSecretGarden.mp3")); // Relative path to your audio file
         audio.loop = true;
         audio.play();
+        audio.volume = 0.1;
 
         return () => {
             audio.pause();
