@@ -16,10 +16,10 @@ const config = {
     initialBackgroundColor: 'white'
 };
 
-let randomIndex = Math.floor(Math.random() * wordList.length);
+const randomIndex = Math.floor(Math.random() * wordList.length);
+const randomWord = wordList[randomIndex];
 
 function App() {
-    const [randomWord, setRandomWord] = useState(wordList[randomIndex])
     const [activeRowIdx, setActiveRowIdx] = useState(0);
     const [right, setRight] = useState([]);
     const [wrong, setWrong] = useState([]);
@@ -34,8 +34,6 @@ function App() {
     }, []);
 
     const restartGame = () => {
-        randomIndex = Math.floor(Math.random() * wordList.length);
-        setRandomWord(wordList[randomIndex])
         setActiveRowIdx(0);
         setRight([]);
         setWrong([]);
