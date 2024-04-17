@@ -20,6 +20,7 @@ let randomIndex = Math.floor(Math.random() * wordList.length);
 
 function App() {
     const [randomWord, setRandomWord] = useState(wordList[randomIndex])
+    const [gameOver, setGameOver] = useState(false);
     const [activeRowIdx, setActiveRowIdx] = useState(0);
     const [right, setRight] = useState([]);
     const [wrong, setWrong] = useState([]);
@@ -34,6 +35,7 @@ function App() {
     }, []);
 
     const restartGame = () => {
+        setGameOver(false);
         randomIndex = Math.floor(Math.random() * wordList.length);
         setRandomWord(wordList[randomIndex])
         setActiveRowIdx(0);
@@ -77,6 +79,7 @@ function App() {
                             setRight([...right, ...tempRight]);
                             newMessage = 'Winner Winner Chicken dinner !!!';
                             setMessage(newMessage);
+                            setGameOver(true);
                             return { backgroundColor: 'green', key: box.key };
                         } else if (randomWord.includes(box.key.toLowerCase())) {
                             if (box.key.toLowerCase() === randomWord[i]) {
@@ -136,7 +139,12 @@ function App() {
 
                     <GuessArea allBoxes={allBoxes} />
                     <MessageCenter message={message} />
-                    <Keyboard right={right} wrong={wrong} half={half} setLetterCallback={(letter) => setLetter(letter)} />
+                    <Keyboard
+                        right={right}
+                        wrong={wrong}
+                        half={half}
+                        setLetterCallback={(letter) => setLetter(letter)}
+                        isDisabled={gameOver} />
                     <Box marginTop={2}>
                         <button onClick={restartGame} style={{ height: '40px', background: '' }}>Restart Game</button>
                     </Box>
