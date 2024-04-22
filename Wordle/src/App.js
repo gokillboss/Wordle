@@ -20,7 +20,6 @@ let randomIndex = Math.floor(Math.random() * wordList.length);
 
 function App() {
     const [randomWord, setRandomWord] = useState(wordList[randomIndex])
-    const [gameOver, setGameOver] = useState(false);
     const [activeRowIdx, setActiveRowIdx] = useState(0);
     const [right, setRight] = useState([]);
     const [wrong, setWrong] = useState([]);
@@ -29,6 +28,9 @@ function App() {
     const [message, setMessage] = useState(' ');
     const [completedRows, setCompletedRows] = useState([]);
     const [remainingRows, setRemainingRows] = useState(new Array((config.numBoxRows - 1) * config.numBoxesPerRow).fill({ backgroundColor: config.initialBackgroundColor }));
+    const [count, setCount] = useState(0);
+    const [gameOver, setGameOver] = useState(false);
+
 
     useEffect(() => {
         restartGame();
@@ -39,6 +41,7 @@ function App() {
         randomIndex = Math.floor(Math.random() * wordList.length);
         setRandomWord(wordList[randomIndex])
         setActiveRowIdx(0);
+        setCount(0);
         setRight([]);
         setWrong([]);
         setHalf([]);
@@ -73,15 +76,19 @@ function App() {
                 const word = newActiveRow.map(box => box.key).join('').toLowerCase();
 
                 if (wordList.includes(word)) {
+                    setCount(count + 1);  
+                   
                     const newCompletedBoxes = newActiveRow.map((box, i) => {
                         if (word === randomWord) {
                             tempRight.push(word.split(""));
                             setRight([...right, ...tempRight]);
                             newMessage = 'Winner Winner Chicken dinner !!!';
-                            setMessage(newMessage);
+                            setMessage(randomWord + newMessage);
                             setGameOver(true);
                             return { backgroundColor: 'green', key: box.key };
                         } else if (randomWord.includes(box.key.toLowerCase())) {
+
+
                             if (box.key.toLowerCase() === randomWord[i]) {
                                 tempRight.push(box.key);
                                 setRight([...right, ...tempRight]);
@@ -92,12 +99,16 @@ function App() {
                                 return { backgroundColor: 'Orange', key: box.key };
                             }
                         } else {
+
                             tempWrong.push(box.key);
                             setWrong([...wrong, ...tempWrong]);
                             newMessage = '  ';
                             setMessage(newMessage);
                             return { backgroundColor: 'silver', key: box.key };
+
                         }
+
+
                     });
 
                     setCompletedRows([...completedRows, ...newCompletedBoxes]);
@@ -108,6 +119,13 @@ function App() {
 
                     const remainingRowsStart = [...remainingRows].slice(config.numBoxesPerRow);
                     setRemainingRows([...newActiveRow.slice(config.numBoxesPerRow), ...remainingRowsStart]);
+
+                    if (count >= 5) {
+                       
+                        newMessage = 'Guess Failed. The word was: ' + randomWord.toUpperCase();
+                        setMessage(newMessage);
+                        setGameOver(true);
+                    }
                 } else {
                     newMessage = 'Not in word list !';
                     setMessage(newMessage);
