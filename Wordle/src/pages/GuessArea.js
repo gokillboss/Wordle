@@ -20,19 +20,12 @@ const config = {
 
 const GuessArea = (props) => {
 
-  
-    //const { activeRow, completedRows, remainingRows } = props;
     const {allBoxes} = props
     
-
     // The guess area divides into three groups of rows stacked. They are:
     //    1. Already completed rows. Initially, this group is empty.
     //    2. The guess row. Keyboard letters get displayed in the boxes of this row.
     //    3. The unused rows. Initially, there are five such rows.
-
-
-    console.log(`number of squared in allBoxes is ${allBoxes.length}`);
-
 
     return (
         <Fragment>

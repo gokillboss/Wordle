@@ -26,16 +26,16 @@ const Keyboard = (props) => {
     const buttonStyle = (letter) => ({
         backgroundColor: colorKey(letter),
         margin: '5px',
-        width: 'calc(10vw - 10px)', // Adjust the width based on the viewport width
-        height: 'calc(10vw - 10px)', // Adjust the height based on the viewport width
-        minWidth: '30px', // Set a minimum width to maintain button size
-        minHeight: '20px', // Set a minimum height to maintain button size
-        maxWidth: '60px', // Set a maximum width to prevent buttons from becoming too large
-        maxHeight: '40px', // Set a maximum height to prevent buttons from becoming too large
+        width: 'calc(10vw - 10px)', 
+        height: 'calc(10vw - 10px)', 
+        minWidth: '30px', 
+        minHeight: '20px', 
+        maxWidth: '60px',
+        maxHeight: '40px',
         fontWeight: 'bold',
         textTransform: 'uppercase',
         color: 'white',
-        //opacity: isDisabled ? 0.5 : 1  // Visually indicate the button is disabled
+
     });
 
     return (

@@ -14,15 +14,10 @@ const config = {
 
 
 const LetterBox = (props) => {
-    // Represent a box into which a letter may be displayed.
-    // In this version, we display the value of "index"
-    // in the box.
 
-    // eslint-disable-next-line
-    const { index, value } = props;
+    const { value } = props;
     const { backgroundColor, key } = value;
 
-    // console.log(`backgroundColor ${backgroundColor}`);
     return (
         <Box sx={{
             width: config.widthOfABox,
