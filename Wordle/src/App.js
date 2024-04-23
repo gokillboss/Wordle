@@ -69,6 +69,7 @@ function App() {
                 setMessage(newMessage);
             }
         } else if (letter === 'Enter') {
+            console.log(randomWord)
             if (activeRowIdx < config.numBoxesPerRow) {
                 newMessage = 'Not enough letters';
                 setMessage(newMessage);
@@ -76,18 +77,17 @@ function App() {
                 const word = newActiveRow.map(box => box.key).join('').toLowerCase();
 
                 if (wordList.includes(word)) {
-                    setCount(count + 1);  
+                  
                    
                     const newCompletedBoxes = newActiveRow.map((box, i) => {
                         if (word === randomWord) {
                             tempRight.push(word.split(""));
                             setRight([...right, ...tempRight]);
                             newMessage = 'Winner Winner Chicken dinner !!!';
-                            setMessage(randomWord + newMessage);
+                            setMessage(newMessage);
                             setGameOver(true);
                             return { backgroundColor: 'green', key: box.key };
                         } else if (randomWord.includes(box.key.toLowerCase())) {
-
 
                             if (box.key.toLowerCase() === randomWord[i]) {
                                 tempRight.push(box.key);
@@ -104,6 +104,12 @@ function App() {
                             setWrong([...wrong, ...tempWrong]);
                             newMessage = '  ';
                             setMessage(newMessage);
+                            setCount(count + 1);  
+                            if (count >= 5) {
+                                newMessage = 'Guess Failed. The word was: ' + randomWord.toUpperCase();
+                                setMessage(newMessage);
+                                setGameOver(true);
+                            }
                             return { backgroundColor: 'silver', key: box.key };
 
                         }
@@ -120,12 +126,7 @@ function App() {
                     const remainingRowsStart = [...remainingRows].slice(config.numBoxesPerRow);
                     setRemainingRows([...newActiveRow.slice(config.numBoxesPerRow), ...remainingRowsStart]);
 
-                    if (count >= 5) {
-                       
-                        newMessage = 'Guess Failed. The word was: ' + randomWord.toUpperCase();
-                        setMessage(newMessage);
-                        setGameOver(true);
-                    }
+
                 } else {
                     newMessage = 'Not in word list !';
                     setMessage(newMessage);
