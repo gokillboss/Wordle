@@ -142,7 +142,7 @@ function App() {
                     <Box>
                         <MessageCenter message={message} />
                     </Box>
-                    <MessageCenter message={message} />
+                  
                     <Keyboard
                         right={right}
                         wrong={wrong}
