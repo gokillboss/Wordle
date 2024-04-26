@@ -68,7 +68,7 @@ function App() {
                 newMessage = '  ';
                 setMessage(newMessage);
             }
-        } else if (letter === 'Enter') {
+        } else if (letter === '⏎') {
             console.log(randomWord)
             if (activeRowIdx < config.numBoxesPerRow) {
                 newMessage = 'Not enough letters';
