@@ -34,7 +34,7 @@ const Keyboard = (props) => {
         maxHeight: '40px',
         fontWeight: 'bold',
         textTransform: 'uppercase',
-        color: 'white',
+        color: 'Black',
 
     });
 

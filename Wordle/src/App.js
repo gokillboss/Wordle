@@ -129,12 +129,12 @@ function App() {
 
     return (
         <Fragment>
-            <Box sx={{ height: '100vh', marginLeft: 'auto', marginRight: 'auto' }}>
+            <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <LeafAnimation />
                 <Box margin={5}>
                     <TopBanner />
                 </Box>
-                <Box marginX={2} sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Box margin='auto' sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <GuessArea allBoxes={allBoxes} />
                     <MessageCenter message={message} />
                     <Keyboard
