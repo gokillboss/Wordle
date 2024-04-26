@@ -35,7 +35,6 @@ const Keyboard = (props) => {
         fontWeight: 'bold',
         textTransform: 'uppercase',
         color: 'Black',
-        fontWeight: 'bold',
 
     });
 
