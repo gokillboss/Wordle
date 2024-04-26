@@ -20,6 +20,7 @@ let randomIndex = Math.floor(Math.random() * wordList.length);
 
 function App() {
     const [randomWord, setRandomWord] = useState(wordList[randomIndex])
+    const [gameOver, setGameOver] = useState(false);
     const [activeRowIdx, setActiveRowIdx] = useState(0);
     const [right, setRight] = useState([]);
     const [wrong, setWrong] = useState([]);
@@ -28,9 +29,6 @@ function App() {
     const [message, setMessage] = useState(' ');
     const [completedRows, setCompletedRows] = useState([]);
     const [remainingRows, setRemainingRows] = useState(new Array((config.numBoxRows - 1) * config.numBoxesPerRow).fill({ backgroundColor: config.initialBackgroundColor }));
-    const [count, setCount] = useState(0);
-    const [gameOver, setGameOver] = useState(false);
-
 
     useEffect(() => {
         restartGame();
@@ -41,7 +39,6 @@ function App() {
         randomIndex = Math.floor(Math.random() * wordList.length);
         setRandomWord(wordList[randomIndex])
         setActiveRowIdx(0);
-        setCount(0);
         setRight([]);
         setWrong([]);
         setHalf([]);
@@ -69,7 +66,6 @@ function App() {
                 setMessage(newMessage);
             }
         } else if (letter === 'Enter') {
-            console.log(randomWord)
             if (activeRowIdx < config.numBoxesPerRow) {
                 newMessage = 'Not enough letters';
                 setMessage(newMessage);
@@ -77,8 +73,6 @@ function App() {
                 const word = newActiveRow.map(box => box.key).join('').toLowerCase();
 
                 if (wordList.includes(word)) {
-                  
-                   
                     const newCompletedBoxes = newActiveRow.map((box, i) => {
                         if (word === randomWord) {
                             tempRight.push(word.split(""));
@@ -88,7 +82,6 @@ function App() {
                             setGameOver(true);
                             return { backgroundColor: 'green', key: box.key };
                         } else if (randomWord.includes(box.key.toLowerCase())) {
-
                             if (box.key.toLowerCase() === randomWord[i]) {
                                 tempRight.push(box.key);
                                 setRight([...right, ...tempRight]);
@@ -99,22 +92,12 @@ function App() {
                                 return { backgroundColor: 'Orange', key: box.key };
                             }
                         } else {
-
                             tempWrong.push(box.key);
                             setWrong([...wrong, ...tempWrong]);
                             newMessage = '  ';
                             setMessage(newMessage);
-                            setCount(count + 1);  
-                            if (count >= 5) {
-                                newMessage = 'Guess Failed. The word was: ' + randomWord.toUpperCase();
-                                setMessage(newMessage);
-                                setGameOver(true);
-                            }
                             return { backgroundColor: 'silver', key: box.key };
-
                         }
-
-
                     });
 
                     setCompletedRows([...completedRows, ...newCompletedBoxes]);
@@ -125,8 +108,6 @@ function App() {
 
                     const remainingRowsStart = [...remainingRows].slice(config.numBoxesPerRow);
                     setRemainingRows([...newActiveRow.slice(config.numBoxesPerRow), ...remainingRowsStart]);
-
-
                 } else {
                     newMessage = 'Not in word list !';
                     setMessage(newMessage);
@@ -147,15 +128,13 @@ function App() {
     const allBoxes = [...completedRows, ...activeRow, ...remainingRows];
 
     return (
-
         <Fragment>
-            <div >
+            <Box sx={{ height: '100vh', marginLeft: 'auto', marginRight: 'auto' }}>
                 <LeafAnimation />
-                <Box padding={5}>
+                <Box margin={5}>
                     <TopBanner />
                 </Box>
-                <Box margin='auto' sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-
+                <Box marginX={2} sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <GuessArea allBoxes={allBoxes} />
                     <MessageCenter message={message} />
                     <Keyboard
@@ -168,8 +147,8 @@ function App() {
                         <button onClick={restartGame} style={{ height: '40px', background: '' }}>Restart Game</button>
                     </Box>
                 </Box>
-            </div>
-        </Fragment >
+            </Box>
+        </Fragment>
     );
 }
 
