@@ -12,7 +12,7 @@ const Keyboard = (props) => {
     };
 
     const back = '⌫';
-    const enter = 'Enter';
+    const enter = '⏎';
     const keys = [
         'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
         'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
@@ -25,16 +25,16 @@ const Keyboard = (props) => {
 
     const buttonStyle = (letter) => ({
         backgroundColor: colorKey(letter),
-        margin: '5px',
+        margin: '3px',
         width: 'calc(10vw - 10px)', 
-        height: 'calc(10vw - 10px)', 
-        minWidth: '30px', 
+        height: 'calc(10vw - 1px)', 
+        minWidth: '20px', 
         minHeight: '20px', 
         maxWidth: '60px',
         maxHeight: '40px',
         fontWeight: 'bold',
         textTransform: 'uppercase',
-        color: 'white',
+        color: 'White',
 
     });
 
@@ -49,6 +49,11 @@ const Keyboard = (props) => {
                         {letter}
                     </Button>
                 ))}
+                 <Button sx={buttonStyle()}
+                        onClick={() => setLetterCallback(back)}
+                        disabled={isDisabled}>
+                    {back}
+                </Button>
             </div>
             <div style={rowStyle}>
                 {keys.slice(10, 19).map(letter => (
@@ -59,13 +64,14 @@ const Keyboard = (props) => {
                         {letter}
                     </Button>
                 ))}
-            </div>
-            <div style={rowStyle}>
-                <Button sx={buttonStyle()}
+                                <Button sx={buttonStyle()}
                         onClick={() => setLetterCallback(enter)}
                         disabled={isDisabled}>
                     {enter}
                 </Button>
+            </div>
+            <div style={rowStyle}>
+
                 {keys.slice(19).map(letter => (
                     <Button key={letter}
                         sx={buttonStyle(letter)}
@@ -74,11 +80,6 @@ const Keyboard = (props) => {
                         {letter}
                     </Button>
                 ))}
-                <Button sx={buttonStyle()}
-                        onClick={() => setLetterCallback(back)}
-                        disabled={isDisabled}>
-                    {back}
-                </Button>
             </div>
         </Fragment>
     );
