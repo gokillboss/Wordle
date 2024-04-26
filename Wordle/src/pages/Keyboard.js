@@ -25,16 +25,16 @@ const Keyboard = (props) => {
 
     const buttonStyle = (letter) => ({
         backgroundColor: colorKey(letter),
-        margin: '1px',
+        margin: '5px',
         width: 'calc(10vw - 10px)', 
         height: 'calc(10vw - 10px)', 
-        minWidth: '15px', 
-        minHeight: '10px', 
-        maxWidth: '50px',
-        maxHeight: '30px',
+        minWidth: '30px', 
+        minHeight: '20px', 
+        maxWidth: '60px',
+        maxHeight: '40px',
         fontWeight: 'bold',
         textTransform: 'uppercase',
-        color: 'White',
+        color: 'white',
 
     });
 
