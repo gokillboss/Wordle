@@ -129,15 +129,18 @@ function App() {
     const allBoxes = [...completedRows, ...activeRow, ...remainingRows];
 
     return (
-        <Fragment>
+        <Fragment >
             <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <LeafAnimation />
-                <Box margin={5}>
+                <Box margin = {5} >
                     <TopBanner />
                 </Box>
-                <Box margin='auto' sx={{ width: '100%',height : '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                   <Box>
-                    <GuessArea allBoxes={allBoxes} />
+                <Box marginTop = {3} sx={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '290px' }}>
+                    <Box>
+                        <GuessArea allBoxes={allBoxes} />
+                    </Box>
+                    <Box>
+                        <MessageCenter message={message} />
                     </Box>
                     <MessageCenter message={message} />
                     <Keyboard
@@ -147,7 +150,7 @@ function App() {
                         setLetterCallback={(letter) => setLetter(letter)}
                         isDisabled={gameOver} />
                     <Box marginTop={2}>
-                        <button onClick={restartGame} style={{ height: '40px', background: '' }}>Restart Game</button>
+                        <button onClick={restartGame} style={{ height: '40px' }}>Restart Game</button>
                     </Box>
                 </Box>
             </Box>

@@ -6,7 +6,7 @@ const MessageCenter = (props) => {
 
     return (
         <Fragment>
-            <Box sx={{mt: 5, mb: 5}}>
+            <Box sx={{mt: 5}}>
                 <Typography variant='h5'>
                     {message}
                 </Typography>
