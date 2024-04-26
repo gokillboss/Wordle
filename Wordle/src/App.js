@@ -147,15 +147,13 @@ function App() {
     const allBoxes = [...completedRows, ...activeRow, ...remainingRows];
 
     return (
-
         <Fragment>
-            <div >
+            <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <LeafAnimation />
                 <Box padding={5}>
                     <TopBanner />
                 </Box>
                 <Box margin='auto' sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-
                     <GuessArea allBoxes={allBoxes} />
                     <MessageCenter message={message} />
                     <Keyboard
@@ -168,8 +166,8 @@ function App() {
                         <button onClick={restartGame} style={{ height: '40px', background: '' }}>Restart Game</button>
                     </Box>
                 </Box>
-            </div>
-        </Fragment >
+            </Box>
+        </Fragment>
     );
 }
 
