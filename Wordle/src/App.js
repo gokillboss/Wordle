@@ -153,8 +153,10 @@ function App() {
                 <Box padding={5}>
                     <TopBanner />
                 </Box>
-                <Box margin='auto' sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Box margin='auto' sx={{ width: '100%',height : '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                   <Box>
                     <GuessArea allBoxes={allBoxes} />
+                    </Box>
                     <MessageCenter message={message} />
                     <Keyboard
                         right={right}
