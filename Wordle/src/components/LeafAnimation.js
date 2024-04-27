@@ -16,9 +16,9 @@ const BackgroundMusic = () => {
 
     return null;
 };
+
+
 const LeafAnimation = () => {
-
-
 
     const autumnColors = ['#8dc63f', '#e68a00', '#b35900', '#ff9900', '#cc6600'];
 

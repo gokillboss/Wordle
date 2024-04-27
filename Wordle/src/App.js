@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import GuessArea from "./pages/GuessArea";
 import Keyboard from "./pages/Keyboard";
@@ -32,7 +32,6 @@ function App() {
   const [message, setMessage] = useState(" ");
   const [completedRows, setCompletedRows] = useState([]);
   const [count, setCount] = useState(0);
-
   const [remainingRows, setRemainingRows] = useState(
     new Array((config.numBoxRows - 1) * config.numBoxesPerRow).fill({
       backgroundColor: config.initialBackgroundColor,
@@ -124,8 +123,8 @@ function App() {
               newMessage = "  ";
               setMessage(newMessage);
               setCount(count + 1);
-              if (count === 5) {
-                newMessage = "Guess Failed. The word was: " + randomWord.toUperCase();
+              if (count >= 5) {
+                newMessage = "Guess Failed. The word was: " + randomWord.toUpperCase();
                 setMessage(newMessage);
                 setGameOver(true);
               }
@@ -170,7 +169,7 @@ function App() {
   const allBoxes = [...completedRows, ...activeRow, ...remainingRows];
 
   return (
-    <Fragment>
+    <div>
       <Box
         sx={{
           height: "100vh",
@@ -217,7 +216,7 @@ function App() {
           </Box>
         </Box>
       </Box>
-    </Fragment>
+    </div>
   );
 }
 
